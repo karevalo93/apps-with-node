@@ -19,3 +19,21 @@ const add = (num1, num2, callback) => {
 add(1, 4, (sum) => {
     console.log(sum) // Should print: 5
 })
+
+const deleteTask = async (id) => {
+
+    const find = await Task.findByIdAndDelete(id)
+    const count = await Task.countDocuments({completed: false})
+
+    return count
+
+}
+
+
+deleteTask('5355425').then((result) => {
+    console.log(result)
+}).catch((err) => {
+    console.log(err)
+})
+
+
